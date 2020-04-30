@@ -28,7 +28,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/{id}")
+	@GetMapping("/{productId}")
 	public ResponseEntity<Object> findProduct(@PathVariable("productId") Integer productId) throws Exception {
 		Product p = productService.findProduct(productId);
 		if (p != null) {
@@ -38,7 +38,7 @@ public class ProductController {
 		
 	}
 	
-	@PutMapping(value="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
 	public @ResponseBody ResponseEntity<Product> update(@Valid @RequestBody ProductDTO productDTO) {        
 		Product temp = productService.update(productDTO);

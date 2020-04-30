@@ -3,6 +3,7 @@ package com.example.introapps.services;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.introapps.converters.ProductConverter;
 import com.example.introapps.dtos.ProductDTO;
@@ -10,6 +11,7 @@ import com.example.introapps.exceptions.InvalidProductException;
 import com.example.introapps.models.Product;
 import com.example.introapps.repos.ProductRepo;
 
+@Service
 public class ProductService {
 
 	@Autowired
