@@ -38,11 +38,11 @@ public class ProductController {
 		
 	}
 	
-	@PutMapping(value="/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="update/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
 	public @ResponseBody ResponseEntity<Product> update(@Valid @RequestBody ProductDTO productDTO) {        
 		Product temp = productService.update(productDTO);
-		if(temp == null) return new ResponseEntity<>(temp, HttpStatus.BAD_REQUEST);
+		if(temp == null) return new ResponseEntity<>(temp, HttpStatus.NOT_FOUND);
 	      return new ResponseEntity<>(temp, HttpStatus.OK);
 	} 
 }

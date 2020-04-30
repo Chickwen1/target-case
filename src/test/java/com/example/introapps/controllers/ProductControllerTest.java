@@ -1,5 +1,6 @@
 package com.example.introapps.controllers;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -19,6 +20,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.introapps.converters.ProductConverter;
+import com.example.introapps.dtos.ProductDTO;
 import com.example.introapps.models.Product;
 import com.example.introapps.services.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -74,6 +77,40 @@ public class ProductControllerTest {
 
 		String assessJson = new ObjectMapper().writeValueAsString(productObj);
 		mockMvc.perform(get("/products/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
+				.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void testUpdateProductById() throws Exception {
+
+		ProductDTO productObj = new ProductDTO();
+
+		productObj.setProductId(1);
+		productObj.setProductName("Cat Food");
+		productObj.setPrice(7.99);
+		
+		Product p = ProductConverter.convert(productObj);
+		when(productServiceMock.update(any(ProductDTO.class))).thenReturn(p);
+
+		String productJson = new ObjectMapper().writeValueAsString(productObj);
+		mockMvc.perform(put("/products/update/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(productJson))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.productId").value(1))
+				.andExpect(jsonPath("$.productName").value("Cat Food")).andExpect(jsonPath("$.price").value(7.99));
+	}
+	
+	@Test
+	public void testUpdateProductByIdNull() throws Exception {
+
+		ProductDTO productObj = new ProductDTO();
+
+		productObj.setProductId(1);
+		productObj.setProductName("Cat Food");
+		productObj.setPrice(7.99);
+
+		when(productServiceMock.update(any(ProductDTO.class))).thenReturn(null);
+
+		String assessJson = new ObjectMapper().writeValueAsString(productObj);
+		mockMvc.perform(put("/products/update/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
 				.andExpect(status().isNotFound());
 	}
 }
