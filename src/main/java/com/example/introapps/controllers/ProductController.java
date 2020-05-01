@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import com.example.introapps.dtos.ProductDTO;
 import com.example.introapps.models.Product;
 import com.example.introapps.services.ProductService;
 
+@Component
 @RestController
 @RequestMapping("products")
 public class ProductController {

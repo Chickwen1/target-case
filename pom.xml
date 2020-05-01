@@ -18,28 +18,11 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>
-		<dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
-		<dependency>
-    		<groupId>com.oracle</groupId>
-    		<artifactId>ojdbc8</artifactId>
-    		<version>12.1.0.2</version>
-		</dependency>
+		<dependencies>
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -74,6 +57,44 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
+
+<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.3.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-hibernate</artifactId>
+    <version>1.2.9</version>
+</dependency>
+		
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
+<dependency>
+    <groupId>com.oracle</groupId>
+    <artifactId>ojdbc8</artifactId>
+    <version>12.1.0.2</version>
+</dependency>
+
+        
 	</dependencies>
 
 	<build>
@@ -84,5 +105,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
