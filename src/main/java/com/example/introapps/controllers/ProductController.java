@@ -24,13 +24,13 @@ import com.example.introapps.services.ProductService;
 
 @Component
 @RestController
-@RequestMapping("products")
+@RequestMapping(value="/products")
 public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/{productId}")
+	@GetMapping(value="/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> findProduct(@PathVariable("productId") Integer productId) throws Exception {
 		Product p = productService.findProduct(productId);
 		if (p != null) {
