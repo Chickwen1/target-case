@@ -2,7 +2,7 @@ package com.example.introapps.dtos;
 
 public class ProductDTO {
 
-	private Integer productId;
+	private String productId;
 	
 	private String productName;
 	
@@ -13,18 +13,18 @@ public class ProductDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductDTO(Integer productId, String productName, double price) {
+	public ProductDTO(String productId, String productName, double price) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
 	}
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -43,6 +43,6 @@ public class ProductDTO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	
 }

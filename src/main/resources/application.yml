@@ -1,0 +1,11 @@
+# Application Port
+server: 
+  port: ${PORT:8080}
+  
+# Mongo Db configuration
+spring: 
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: productdb

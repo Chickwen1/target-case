@@ -1,6 +1,6 @@
 package com.example.introapps.apiClient;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(
 	    name = "productInfo-service",
-	    url = "http://redsky.target.com/v1/pdp/tcin/"
+	    url = "https://redsky.target.com/v2/pdp/tcin/"
 )
 public interface ProductInfoClient {
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,21 +29,21 @@ import com.example.introapps.services.ProductService;
 public class ProductController {
 	
 	@Autowired
-	private ProductService productService;
+	ProductService productService;
 
-	@GetMapping(value="/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> findProduct(@PathVariable("productId") Integer productId) throws Exception {
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Product> findProduct(@PathVariable("productId") String productId) throws Exception {
 		Product p = productService.findProduct(productId);
 		if (p != null) {
-			return new ResponseEntity<Object>(p ,HttpStatus.OK);
+			return new ResponseEntity<Product>(p ,HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>(p ,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Product>(p ,HttpStatus.NOT_FOUND);
 		
 	}
 	
-	@PutMapping(value="update/{productId}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
-	public @ResponseBody ResponseEntity<Product> update(@Valid @RequestBody ProductDTO productDTO) {        
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json")
+	public @ResponseBody ResponseEntity<Product> update(@Valid @RequestBody ProductDTO productDTO, 
+			@PathVariable("id") String productId) {        
 		Product temp = productService.update(productDTO);
 		if(temp == null) return new ResponseEntity<>(temp, HttpStatus.NOT_FOUND);
 	      return new ResponseEntity<>(temp, HttpStatus.OK);

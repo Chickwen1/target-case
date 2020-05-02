@@ -16,21 +16,13 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
 	</properties>
-
 		<dependencies>
 	<dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -40,20 +32,18 @@
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -77,17 +67,6 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.6.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.4.3.Final</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-hibernate</artifactId>
-    <version>1.2.9</version>
-</dependency>
 		
 
         <dependency>
@@ -108,21 +87,12 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<!-- <version>Camden.BUILD-SNAPSHOT</version> -->
-				<!-- <version>Brixton.RELEASE</version> -->
-				<version>Dalston.SR3</version>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
-			<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-dependencies</artifactId> 
-				<version>Brixton.RELEASE</version> <type>pom</type> <scope>import</scope> 
-				</dependency> -->
 		</dependencies>
 	</dependencyManagement>
-        
-	
-
 	<build>
 		<plugins>
 			<plugin>

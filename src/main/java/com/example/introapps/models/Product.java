@@ -1,27 +1,17 @@
 package com.example.introapps.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table (name = "PRODUCT")
+
+@Document(collection="products")
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userid_gen")
-	@SequenceGenerator(name = "productid_gen", sequenceName = "PRODUCT_ID", allocationSize = 1)
-	@Column(name = "PRODUCTID")
-	private Integer productId;
-	
-	@Column(name = "PRODUCTNAME")
+	private String productId;
+	@Transient
 	private String productName;
-	
-	@Column(name = "PRICE")
 	private double price;
 	
 
@@ -31,7 +21,7 @@ public class Product {
 	}
 
 
-	public Product(Integer productId, String productName, double price) {
+	public Product(String productId, String productName, double price) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -39,12 +29,12 @@ public class Product {
 	}
 
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -111,6 +101,8 @@ public class Product {
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price + "]";
 	}
+
+	
 	
 }
 
