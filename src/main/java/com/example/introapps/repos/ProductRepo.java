@@ -1,15 +1,9 @@
 package com.example.introapps.repos;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
+import org.springframework.data.mongodb.repository.MongoRepository;
 import com.example.introapps.models.Product;
 
-public interface ProductRepo extends JpaRepository<Product,Integer>{
+public interface ProductRepo extends MongoRepository<Product, String>{
 
-	Product save(Product product);
-	
-	@Query("select p from Product p where p.productId = :productId")
-	Product findProductById(@Param("productId") Integer productId);
+	public Product getProductByproductId(String productId);
 }

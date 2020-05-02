@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.introapps.apiClient.ProductInfoClient;
 import com.example.introapps.converters.ProductConverter;
 import com.example.introapps.dtos.ProductDTO;
 import com.example.introapps.exceptions.InvalidProductException;
@@ -16,6 +17,9 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepo productRepo;
+	
+	@Autowired
+	private ProductInfoClient productInfoClient;
 	
 	@Transactional
 	public Product findProduct(Integer productId) {
